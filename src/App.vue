@@ -1,6 +1,11 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
+    <b-nav tabs fill>
+      <b-nav-item active href="#/">Saldo conta corrente</b-nav-item>
+      <b-nav-item href="#/deposito">Deposito em conta corrente</b-nav-item>
+      <b-nav-item href="#/saque">Saque em conta corrente</b-nav-item>
+    </b-nav>
     <router-view/>
   </div>
 </template>
