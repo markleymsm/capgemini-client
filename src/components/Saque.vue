@@ -8,25 +8,17 @@
         label-class="font-weight-bold pt-0"
         class="mb-0"
       >
-        <b-form-group
-          label="Numero da conta:"
-          label-for="numero-conta"
-          label-cols-sm="3"
-          label-align-sm="right"
-        >
-          <b-form-input id="numero-conta">
-          </b-form-input>
-        </b-form-group>
-
-        <b-form-group
-          label="Valor a ser depositado:"
-          label-for="deposito"
-          label-cols-sm="3"
-          label-align-sm="right"
-        >
-          <b-form-input id="deposito"></b-form-input>
-        </b-form-group>
-        <b-button pill variant="primary">Sacar</b-button>
+        <b-input-group prepend="Numero da conta:">
+          <input type="number"
+                 aria-label="Text input with checkbox"
+                 v-model="conta.numero_conta">
+        </b-input-group>
+        <b-input-group prepend="Valor a ser depositado:">
+          <money v-model="conta.valor_saque"
+                 v-bind="money"
+                 class="form-input input-lg"></money>
+        </b-input-group>
+        <b-button pill variant="primary" @click="sacar">Sacar</b-button>
       </b-form-group>
     </b-card>
   </div>
@@ -34,7 +26,29 @@
 
 <script>
 export default {
-  name: "Saque"
+  name: "Saque",
+  data() {
+    return {
+      money: {
+        decimal: ',',
+        thousands: '.',
+        prefix: 'R$ ',
+        precision: 2,
+        masked: false
+      }
+    }
+  },
+  computed: {
+    conta: function () {
+      return this.$store.state.conta.conta
+    }
+  },
+  methods: {
+    sacar: function () {
+      this.$store.dispatch('saqueConta', this.conta).then(() => {
+      })
+    }
+  }
 }
 </script>
 

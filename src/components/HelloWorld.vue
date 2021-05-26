@@ -1,6 +1,13 @@
 <template>
   <div class="hello">
-    <b-table striped hover :items="items"></b-table>
+    <b-table  class="mt-3"
+              outlined
+              :items="contas"
+              :fields="fields">
+      <template #cell(saldo)="data">
+        {{ data.item.saldo }} R$
+      </template>
+    </b-table>
   </div>
 </template>
 
@@ -10,18 +17,19 @@ export default {
   data() {
     return {
       msg: 'Welcome to Your Vue.js App',
-      items: [
-        {conta: 40, dono_da_conta: 'Dickerson', saldo_em_conta: '400'},
-        {conta: 21, dono_da_conta: 'Larsen', saldo_em_conta: '600'},
-        {conta: 38, dono_da_conta: 'Jami', saldo_em_conta: '5.600'},
-        {conta: 89, dono_da_conta: 'Geneva', saldo_em_conta: '4.500'}
-      ]
+      fields: ['numero_conta', 'saldo'],
     }
   },
   methods: {
-    buscaSaldoContaCorrente() {
 
+  },
+  computed:{
+    contas: function (){
+      return this.$store.state.conta.contas
     }
+  },
+  mounted() {
+    this.$store.dispatch('getAllContas')
   }
 }
 </script>

@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <b-nav tabs fill>
-      <b-nav-item active href="#/">Saldo conta corrente</b-nav-item>
-      <b-nav-item href="#/deposito">Deposito em conta corrente</b-nav-item>
-      <b-nav-item href="#/saque">Saque em conta corrente</b-nav-item>
+    <b-nav fill tabs>
+      <b-nav-item :active="tab === 'saldo'" @click="tab = 'saldo'" href="#/">Saldo conta corrente</b-nav-item>
+      <b-nav-item :active="tab === 'depo'" @click="tab = 'depo'" href="#/deposito">Deposito em conta corrente</b-nav-item>
+      <b-nav-item :active="tab === 'saq'" @click="tab = 'saq'" href="#/saque">Saque em conta corrente</b-nav-item>
     </b-nav>
     <router-view/>
   </div>
@@ -12,7 +12,12 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  data(){
+    return {
+      tab: 'saldo'
+    }
+  }
 }
 </script>
 
