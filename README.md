@@ -5,10 +5,10 @@
 ## Build Setup Client
 
 ``` bash
-# install dependencies
+# Instalando as dependências
 npm install
 
-# serve with hot reload at localhost:8080
+# Execute o comando a baixo na URL localhost:8080
 npm run dev
 
 ```
