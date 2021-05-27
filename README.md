@@ -2,7 +2,7 @@
 
 > DESAFIO CAPGEMINI
 
-## Build Setup
+## Build Setup Client
 
 ``` bash
 # install dependencies
